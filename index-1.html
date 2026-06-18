@@ -1,0 +1,1829 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EarnBiz — Générez des revenus avec l'affiliation intelligente</title>
+  <meta name="description" content="EarnBiz vous guide pas à pas pour générer des revenus durables grâce à l'affiliation. Méthode structurée, outils concrets, résultats réels." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================
+       TOKENS & RESET
+    ============================ */
+    :root {
+      --bg:        #0A0B0F;
+      --bg-card:   #13151E;
+      --bg-glass:  rgba(26,28,40,0.7);
+      --border:    rgba(255,255,255,0.07);
+      --gold:      #F5C842;
+      --gold-dim:  #C9992A;
+      --gold-glow: rgba(245,200,66,0.18);
+      --text:      #E8E8F0;
+      --muted:     #6B7080;
+      --white:     #ffffff;
+      --green:     #22D07A;
+      --red:       #FF5B5B;
+      --radius:    12px;
+      --radius-lg: 20px;
+      --ff-display: 'Syne', sans-serif;
+      --ff-body:    'Inter', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--ff-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ============================
+       UTILITY
+    ============================ */
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .gold { color: var(--gold); }
+    .muted { color: var(--muted); }
+
+    .tag {
+      display: inline-block;
+      font-family: var(--ff-display);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--gold-glow);
+      border: 1px solid rgba(245,200,66,0.25);
+      border-radius: 100px;
+      padding: 4px 14px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-header .section-sub {
+      margin: 0 auto;
+    }
+
+    /* gold rule */
+    .gold-rule {
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin: 20px auto 0;
+      border-radius: 2px;
+    }
+
+    /* ============================
+       BUTTONS
+    ============================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--ff-display);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+      padding: 14px 28px;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      white-space: nowrap;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #F5C842 0%, #C9992A 100%);
+      color: #0A0B0F;
+      box-shadow: 0 4px 24px rgba(245,200,66,0.30);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 36px rgba(245,200,66,0.45);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: var(--gold-glow);
+    }
+
+    .btn-lg {
+      padding: 16px 36px;
+      font-size: 1rem;
+    }
+
+    /* ============================
+       NAVIGATION
+    ============================ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10,11,15,0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: background 0.3s;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: var(--ff-display);
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--white); }
+
+    .nav-cta { display: flex; gap: 12px; }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0; bottom: 0;
+      background: var(--bg);
+      z-index: 99;
+      flex-direction: column;
+      padding: 40px 24px;
+      gap: 8px;
+    }
+
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      font-family: var(--ff-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text);
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mobile-menu .btn { margin-top: 16px; width: 100%; justify-content: center; }
+
+    /* scroll progress bar */
+    .progress-bar {
+      position: fixed;
+      top: 63px; left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-dim));
+      width: 0%;
+      z-index: 101;
+      transition: width 0.1s linear;
+    }
+
+    /* ============================
+       HERO
+    ============================ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* background ambiance */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(245,200,66,0.06) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(34,208,122,0.04) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    /* grid dots pattern */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-left { max-width: 580px; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(245,200,66,0.08);
+      border: 1px solid rgba(245,200,66,0.2);
+      border-radius: 100px;
+      padding: 6px 16px 6px 8px;
+      margin-bottom: 28px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--gold);
+    }
+
+    .hero-badge-dot {
+      width: 8px; height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px rgba(34,208,122,0.3);
+      animation: pulse-green 2s infinite;
+    }
+
+    @keyframes pulse-green {
+      0%, 100% { box-shadow: 0 0 0 2px rgba(34,208,122,0.3); }
+      50%       { box-shadow: 0 0 0 5px rgba(34,208,122,0.1); }
+    }
+
+    .hero-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2.5rem, 5.5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title .highlight {
+      background: linear-gradient(135deg, #F5C842, #FFAA00);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 36px;
+      max-width: 480px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .trust-icon {
+      width: 18px; height: 18px;
+      flex-shrink: 0;
+    }
+
+    /* ============================
+       EARNINGS TICKER (hero right)
+    ============================ */
+    .ticker-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(245,200,66,0.08);
+      position: relative;
+    }
+
+    .ticker-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ticker-header-title {
+      font-family: var(--ff-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--green);
+      letter-spacing: 0.06em;
+    }
+
+    .live-dot {
+      width: 6px; height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse-green 1.5s infinite;
+    }
+
+    .ticker-main {
+      padding: 24px 20px 16px;
+    }
+
+    .ticker-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+
+    .ticker-value {
+      font-family: var(--ff-display);
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .ticker-delta {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--green);
+      background: rgba(34,208,122,0.1);
+      border-radius: 6px;
+      padding: 2px 8px;
+    }
+
+    .ticker-rows {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .ticker-row {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      transition: background 0.2s;
+    }
+
+    .ticker-row:hover { background: rgba(255,255,255,0.03); }
+
+    .ticker-row-name { color: var(--text); font-weight: 500; }
+    .ticker-row-amount { font-family: var(--ff-display); font-weight: 700; color: var(--white); }
+    .ticker-row-change { font-size: 0.75rem; font-weight: 600; }
+    .ticker-row-change.up { color: var(--green); }
+    .ticker-row-change.dn { color: var(--red); }
+
+    .ticker-footer {
+      padding: 14px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mini-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 28px;
+    }
+
+    .mini-bar {
+      width: 4px;
+      background: linear-gradient(to top, var(--gold-dim), var(--gold));
+      border-radius: 2px;
+      opacity: 0.7;
+    }
+
+    .ticker-footer-text {
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    /* ============================
+       SOCIAL PROOF STRIP
+    ============================ */
+    .proof-strip {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 24px 0;
+      overflow: hidden;
+    }
+
+    .proof-strip-inner {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      white-space: nowrap;
+    }
+
+    .proof-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+
+    .proof-stat-num {
+      font-family: var(--ff-display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+
+    .proof-stat-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .proof-divider {
+      width: 1px;
+      height: 40px;
+      background: var(--border);
+      flex-shrink: 0;
+    }
+
+    /* ============================
+       WHY EARNBIZ
+    ============================ */
+    .section { padding: 100px 0; }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(245,200,66,0.2);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 0 1px rgba(245,200,66,0.08);
+    }
+
+    .card:hover::before { opacity: 1; }
+
+    .card-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      background: var(--gold-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+
+    .card-title {
+      font-family: var(--ff-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .card-body {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       HOW IT WORKS
+    ============================ */
+    .how-bg {
+      background: linear-gradient(180deg, var(--bg) 0%, #0D0F18 50%, var(--bg) 100%);
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+
+    /* connecting line */
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 40px;
+      left: calc(12.5% + 20px);
+      right: calc(12.5% + 20px);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), var(--gold), transparent);
+      opacity: 0.2;
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .step-num {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--gold);
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+      transition: background 0.3s, border-color 0.3s;
+    }
+
+    .step:hover .step-num {
+      background: var(--gold-glow);
+      border-color: var(--gold);
+    }
+
+    .step-title {
+      font-family: var(--ff-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .step-body {
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ============================
+       STATS
+    ============================ */
+    .stats-section {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 70px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+    }
+
+    .stat-cell {
+      background: var(--bg-card);
+      padding: 40px 32px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: var(--ff-display);
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: var(--gold);
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* ============================
+       TESTIMONIALS
+    ============================ */
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .testi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .testi-card:hover {
+      border-color: rgba(245,200,66,0.15);
+      transform: translateY(-2px);
+    }
+
+    .testi-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+
+    .star {
+      width: 14px; height: 14px;
+      color: var(--gold);
+    }
+
+    .testi-text {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testi-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dim), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-display);
+      font-weight: 800;
+      font-size: 0.85rem;
+      color: #0A0B0F;
+      flex-shrink: 0;
+    }
+
+    .testi-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .testi-role {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    /* ============================
+       OFFER / CTA SECTION
+    ============================ */
+    .offer-section {
+      padding: 100px 0;
+    }
+
+    .offer-box {
+      background: var(--bg-card);
+      border: 1px solid rgba(245,200,66,0.15);
+      border-radius: 24px;
+      padding: 60px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .offer-box::before {
+      content: '';
+      position: absolute;
+      top: -200px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 400px;
+      background: radial-gradient(ellipse, rgba(245,200,66,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .offer-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 16px;
+      line-height: 1.15;
+    }
+
+    .offer-sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .offer-features {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .offer-feature {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.85rem;
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 7px 16px;
+    }
+
+    .offer-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ============================
+       FAQ
+    ============================ */
+    .faq-section { padding: 100px 0; }
+
+    .faq-list {
+      max-width: 740px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .faq-item.open {
+      border-color: rgba(245,200,66,0.2);
+    }
+
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      cursor: pointer;
+      gap: 16px;
+      user-select: none;
+    }
+
+    .faq-q-text {
+      font-family: var(--ff-display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .faq-icon {
+      width: 24px; height: 24px;
+      flex-shrink: 0;
+      border-radius: 6px;
+      background: rgba(245,200,66,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s, background 0.2s;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--gold-glow);
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s;
+      padding: 0 24px;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 400px;
+      padding: 0 24px 20px;
+    }
+
+    .faq-a p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    /* ============================
+       FOOTER
+    ============================ */
+    .footer {
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      padding: 60px 0 32px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 12px;
+      max-width: 260px;
+      line-height: 1.7;
+    }
+
+    .footer-col-title {
+      font-family: var(--ff-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul a {
+      font-size: 0.85rem;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+
+    .footer-col ul a:hover { color: var(--white); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 24px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .footer-note {
+      font-size: 0.72rem;
+      color: var(--muted);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 14px;
+      max-width: 440px;
+      text-align: right;
+      line-height: 1.6;
+    }
+
+    /* ============================
+       ANIMATIONS
+    ============================ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* stagger children */
+    .stagger > * {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .stagger.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay: 0s; }
+    .stagger.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay: 0.1s; }
+    .stagger.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay: 0.2s; }
+    .stagger.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay: 0.3s; }
+    .stagger.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay: 0.4s; }
+    .stagger.visible > *:nth-child(6) { opacity:1; transform:none; transition-delay: 0.5s; }
+
+    /* entrance animation */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-left > * {
+      animation: fadeUp 0.7s ease forwards;
+      opacity: 0;
+    }
+
+    .hero-left > *:nth-child(1) { animation-delay: 0.1s; }
+    .hero-left > *:nth-child(2) { animation-delay: 0.2s; }
+    .hero-left > *:nth-child(3) { animation-delay: 0.3s; }
+    .hero-left > *:nth-child(4) { animation-delay: 0.4s; }
+    .hero-left > *:nth-child(5) { animation-delay: 0.5s; }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(40px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .ticker-panel {
+      animation: slideIn 0.8s 0.4s ease forwards;
+      opacity: 0;
+    }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 1024px) {
+      .hero-content { grid-template-columns: 1fr; gap: 48px; }
+      .ticker-panel { max-width: 480px; margin: 0 auto; }
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+      .steps-grid::before { display: none; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+    }
+
+    @media (max-width: 768px) {
+      .section { padding: 70px 0; }
+      .nav-links, .nav-cta { display: none; }
+      .nav-hamburger { display: flex; }
+      .hero { padding: 100px 0 60px; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .offer-box { padding: 40px 24px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-note { text-align: center; max-width: 100%; }
+      .proof-strip-inner { gap: 36px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; justify-content: center; }
+      .offer-actions { flex-direction: column; }
+      .offer-actions .btn { width: 100%; justify-content: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===================== SCROLL PROGRESS ===================== -->
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
+  <!-- ===================== NAVIGATION ===================== -->
+  <nav class="nav" role="navigation" aria-label="Navigation principale">
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo" aria-label="EarnBiz accueil">Earn<span>Biz</span></a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="#pourquoi">Pourquoi EarnBiz</a></li>
+        <li><a href="#comment">Comment ça marche</a></li>
+        <li><a href="#resultats">Résultats</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+
+      <div class="nav-cta">
+        <a href="#offre" class="btn btn-outline">Se connecter</a>
+        <a href="#offre" class="btn btn-primary">Commencer gratuitement</a>
+      </div>
+
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu mobile" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu mobile">
+    <a href="#pourquoi" class="mobile-link">Pourquoi EarnBiz</a>
+    <a href="#comment" class="mobile-link">Comment ça marche</a>
+    <a href="#resultats" class="mobile-link">Résultats</a>
+    <a href="#faq" class="mobile-link">FAQ</a>
+    <a href="#offre" class="btn btn-primary">Commencer gratuitement →</a>
+  </div>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero" id="accueil" aria-labelledby="hero-title">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-grid" aria-hidden="true"></div>
+
+    <div class="container">
+      <div class="hero-content">
+
+        <!-- LEFT -->
+        <div class="hero-left">
+          <div class="hero-badge" role="status">
+            <span class="hero-badge-dot" aria-hidden="true"></span>
+            Plateforme active — nouveaux membres cette semaine
+          </div>
+
+          <h1 class="hero-title" id="hero-title">
+            Générez des revenus<br>
+            réels avec l'affiliation<br>
+            <span class="highlight">intelligente</span>
+          </h1>
+
+          <p class="hero-sub">
+            EarnBiz structure votre chemin vers la liberté financière via l'affiliation. 
+            Méthode claire, outils concrets, et un système qui travaille pour vous — 
+            même quand vous dormez.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#offre" class="btn btn-primary btn-lg">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+              Démarrer maintenant — Gratuit
+            </a>
+            <a href="#comment" class="btn btn-outline btn-lg">
+              Voir comment ça marche
+            </a>
+          </div>
+
+          <div class="hero-trust" role="list" aria-label="Garanties">
+            <div class="trust-item" role="listitem">
+              <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" aria-hidden="true"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              Sans risque
+            </div>
+            <div class="trust-item" role="listitem">
+              <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Résultats en 30 jours
+            </div>
+            <div class="trust-item" role="listitem">
+              <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+              +12 400 membres
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Live Earnings Ticker -->
+        <div class="ticker-panel" role="region" aria-label="Tableau de bord revenus en direct">
+          <div class="ticker-header">
+            <span class="ticker-header-title">Dashboard Affilié</span>
+            <span class="live-badge" role="status" aria-live="polite">
+              <span class="live-dot" aria-hidden="true"></span>
+              LIVE
+            </span>
+          </div>
+
+          <div class="ticker-main">
+            <div class="ticker-label">Revenus du mois</div>
+            <div class="ticker-value" id="mainValue" aria-live="polite" aria-atomic="true">€2 847,50</div>
+            <span class="ticker-delta" aria-label="Hausse de 18,4% ce mois">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+              +18,4% ce mois
+            </span>
+          </div>
+
+          <div class="ticker-rows" role="table" aria-label="Programmes affiliés">
+            <div class="ticker-row" role="row" id="row1">
+              <span class="ticker-row-name" role="cell">Programme A</span>
+              <span class="ticker-row-amount" role="cell" id="v1">€892</span>
+              <span class="ticker-row-change up" role="cell">+12%</span>
+            </div>
+            <div class="ticker-row" role="row" id="row2">
+              <span class="ticker-row-name" role="cell">Programme B</span>
+              <span class="ticker-row-amount" role="cell" id="v2">€1 240</span>
+              <span class="ticker-row-change up" role="cell">+27%</span>
+            </div>
+            <div class="ticker-row" role="row" id="row3">
+              <span class="ticker-row-name" role="cell">Programme C</span>
+              <span class="ticker-row-amount" role="cell" id="v3">€415</span>
+              <span class="ticker-row-change dn" role="cell">-3%</span>
+            </div>
+            <div class="ticker-row" role="row" id="row4">
+              <span class="ticker-row-name" role="cell">Programme D</span>
+              <span class="ticker-row-amount" role="cell" id="v4">€300,50</span>
+              <span class="ticker-row-change up" role="cell">+8%</span>
+            </div>
+          </div>
+
+          <div class="ticker-footer" aria-hidden="true">
+            <div class="mini-chart" id="miniChart">
+              <!-- Bars injected by JS -->
+            </div>
+            <span class="ticker-footer-text">Mis à jour en temps réel</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROOF STRIP ===================== -->
+  <div class="proof-strip" role="region" aria-label="Indicateurs clés">
+    <div class="container">
+      <div class="proof-strip-inner stagger">
+        <div class="proof-stat">
+          <span class="proof-stat-num">12 400+</span>
+          <span class="proof-stat-label">membres actifs</span>
+        </div>
+        <div class="proof-divider" aria-hidden="true"></div>
+        <div class="proof-stat">
+          <span class="proof-stat-num">€4,2M+</span>
+          <span class="proof-stat-label">générés par la communauté</span>
+        </div>
+        <div class="proof-divider" aria-hidden="true"></div>
+        <div class="proof-stat">
+          <span class="proof-stat-num">340+</span>
+          <span class="proof-stat-label">programmes référencés</span>
+        </div>
+        <div class="proof-divider" aria-hidden="true"></div>
+        <div class="proof-stat">
+          <span class="proof-stat-num">4,8/5</span>
+          <span class="proof-stat-label">note moyenne utilisateurs</span>
+        </div>
+        <div class="proof-divider" aria-hidden="true"></div>
+        <div class="proof-stat">
+          <span class="proof-stat-num">28 jours</span>
+          <span class="proof-stat-label">pour les premiers revenus</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== WHY EARNBIZ ===================== -->
+  <section class="section" id="pourquoi" aria-labelledby="why-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="tag">Pourquoi EarnBiz</div>
+        <h2 class="section-title" id="why-title">Conçu pour ceux qui veulent vraiment<br>changer leur situation financière</h2>
+        <p class="section-sub">Pas de promesses vides. Un système structuré qui vous donne les outils, la méthode et l'environnement pour réussir.</p>
+        <div class="gold-rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="cards-grid stagger">
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h3 class="card-title">Méthode éprouvée, pas de hasard</h3>
+          <p class="card-body">Chaque étape de notre framework est testée par des milliers de membres. Vous suivez un processus clair, pas une intuition.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <h3 class="card-title">Accessible dès le premier jour</h3>
+          <p class="card-body">Débutant complet ou marketeur confirmé — notre parcours s'adapte à votre niveau. Zéro jargon inutile, 100% actionnable.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <h3 class="card-title">Les meilleurs programmes, déjà sélectionnés</h3>
+          <p class="card-body">On analyse et valide 340+ programmes d'affiliation pour vous. Vous n'investissez votre temps que sur ceux qui paient vraiment.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          </div>
+          <h3 class="card-title">Revenus passifs, pas actifs</h3>
+          <p class="card-body">L'objectif n'est pas de travailler plus. C'est de construire des flux de revenus qui fonctionnent en dehors de vos heures actives.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3 class="card-title">Communauté active et entraide</h3>
+          <p class="card-body">Vous n'êtes jamais seul. Une communauté de membres partage stratégies, résultats et conseils chaque jour.</p>
+        </div>
+
+        <div class="card">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          </div>
+          <h3 class="card-title">100% transparent sur l'affiliation</h3>
+          <p class="card-body">EarnBiz est lui-même un modèle d'affiliation honnête. Pas de MLM, pas de mensonge — juste des revenus réels issus de vraies recommandations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== HOW IT WORKS ===================== -->
+  <section class="section how-bg" id="comment" aria-labelledby="how-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="tag">Comment ça marche</div>
+        <h2 class="section-title" id="how-title">4 étapes pour passer de zéro<br>à vos premiers revenus</h2>
+        <p class="section-sub">Un processus linéaire et clair. Pas de complexité inutile — juste les actions qui génèrent des résultats.</p>
+        <div class="gold-rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="steps-grid stagger" role="list">
+        <div class="step" role="listitem">
+          <div class="step-num" aria-hidden="true">1</div>
+          <h3 class="step-title">Rejoignez la plateforme</h3>
+          <p class="step-body">Créez votre compte gratuitement. Définissez votre profil, votre niveau et vos objectifs de revenus en 5 minutes.</p>
+        </div>
+        <div class="step" role="listitem">
+          <div class="step-num" aria-hidden="true">2</div>
+          <h3 class="step-title">Choisissez vos programmes</h3>
+          <p class="step-body">Parcourez notre catalogue de 340+ programmes validés et sélectionnez ceux qui correspondent à votre audience ou votre niche.</p>
+        </div>
+        <div class="step" role="listitem">
+          <div class="step-num" aria-hidden="true">3</div>
+          <h3 class="step-title">Suivez la méthode EarnBiz</h3>
+          <p class="step-body">Accédez à nos modules structurés : création de contenu, stratégie de distribution, optimisation SEO et email. Tout est guidé.</p>
+        </div>
+        <div class="step" role="listitem">
+          <div class="step-num" aria-hidden="true">4</div>
+          <h3 class="step-title">Encaissez et scalez</h3>
+          <p class="step-body">Vos premières commissions arrivent. Suivez vos statistiques en temps réel, dupliquez ce qui marche et faites croître vos revenus.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== STATS ===================== -->
+  <section class="stats-section reveal" role="region" aria-label="Résultats de la plateforme">
+    <div class="container">
+      <div class="stats-grid" role="list">
+        <div class="stat-cell" role="listitem">
+          <div class="stat-num" id="stat1" aria-label="12 400 membres actifs">12 400+</div>
+          <div class="stat-label">membres actifs dans 47 pays</div>
+        </div>
+        <div class="stat-cell" role="listitem">
+          <div class="stat-num" id="stat2" aria-label="4,2 millions d'euros générés">€4,2M+</div>
+          <div class="stat-label">générés par la communauté</div>
+        </div>
+        <div class="stat-cell" role="listitem">
+          <div class="stat-num" id="stat3" aria-label="28 jours en moyenne">28j</div>
+          <div class="stat-label">pour les premiers revenus en moyenne</div>
+        </div>
+        <div class="stat-cell" role="listitem">
+          <div class="stat-num" id="stat4" aria-label="94 pourcent de taux de satisfaction">94%</div>
+          <div class="stat-label">taux de satisfaction membres</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== TESTIMONIALS ===================== -->
+  <section class="section" id="resultats" aria-labelledby="testi-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="tag">Témoignages</div>
+        <h2 class="section-title" id="testi-title">Des membres qui ont changé<br>leur rapport à l'argent</h2>
+        <p class="section-sub">Résultats réels, parcours réels. Chaque profil est différent, les revenus le sont aussi.</p>
+        <div class="gold-rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="testi-grid stagger" role="list" aria-label="Témoignages clients">
+        <article class="testi-card" role="listitem">
+          <div class="testi-stars" aria-label="5 étoiles sur 5">
+            <svg class="star" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testi-text">"J'avais déjà essayé l'affiliation seul, sans résultat. EarnBiz m'a donné la méthode qui manquait. En 6 semaines, j'ai généré mes 1 000 premiers euros. Maintenant je vise 3 000 € par mois."</p>
+          <div class="testi-author">
+            <div class="testi-avatar" aria-hidden="true">TM</div>
+            <div>
+              <div class="testi-name">Thomas M.</div>
+              <div class="testi-role">Consultant indépendant, Lyon</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testi-card" role="listitem">
+          <div class="testi-stars" aria-label="5 étoiles sur 5">
+            <svg class="star" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testi-text">"Ce que j'apprécie le plus c'est l'honnêteté. EarnBiz ne promet pas la fortune du jour au lendemain. Ils donnent les vrais outils et ça fonctionne. Je complète mon salaire de 800 € par mois avec l'affiliation."</p>
+          <div class="testi-author">
+            <div class="testi-avatar" aria-hidden="true">SL</div>
+            <div>
+              <div class="testi-name">Sophie L.</div>
+              <div class="testi-role">Infirmière reconvertie, Bordeaux</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="testi-card" role="listitem">
+          <div class="testi-stars" aria-label="5 étoiles sur 5">
+            <svg class="star" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="var(--gold)" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testi-text">"J'avais une audience Instagram mais aucune idée de comment la monétiser. EarnBiz m'a structuré en 2 semaines. Premier mois complet : 2 150 €. Je suis passé à 4 800 € au 4e mois."</p>
+          <div class="testi-author">
+            <div class="testi-avatar" aria-hidden="true">KA</div>
+            <div>
+              <div class="testi-name">Karim A.</div>
+              <div class="testi-role">Créateur de contenu, Paris</div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===================== OFFER ===================== -->
+  <section class="offer-section" id="offre" aria-labelledby="offer-title">
+    <div class="container">
+      <div class="offer-box reveal">
+        <div class="tag">Commencer maintenant</div>
+        <h2 class="offer-title" id="offer-title">
+          Votre première commission<br>
+          est à <span class="gold">28 jours</span> d'ici
+        </h2>
+        <p class="offer-sub">
+          Rejoignez EarnBiz gratuitement. Accédez à la méthode, au catalogue de programmes et à la communauté dès aujourd'hui. Pas de CB requise.
+        </p>
+
+        <div class="offer-features" role="list" aria-label="Ce que vous obtenez">
+          <div class="offer-feature" role="listitem">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Accès au catalogue complet
+          </div>
+          <div class="offer-feature" role="listitem">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Modules de formation guidés
+          </div>
+          <div class="offer-feature" role="listitem">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Dashboard de suivi en temps réel
+          </div>
+          <div class="offer-feature" role="listitem">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Communauté privée active
+          </div>
+          <div class="offer-feature" role="listitem">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+            Support prioritaire
+          </div>
+        </div>
+
+        <div class="offer-actions">
+          <a href="#" class="btn btn-primary btn-lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            Créer mon compte gratuitement
+          </a>
+          <a href="#comment" class="btn btn-outline btn-lg">En savoir plus</a>
+        </div>
+
+        <p style="margin-top:20px; font-size:0.78rem; color:var(--muted);">
+          Sans carte bancaire · Sans engagement · Résiliation à tout moment
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section class="faq-section" id="faq" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="tag">Questions fréquentes</div>
+        <h2 class="section-title" id="faq-title">Tout ce que vous voulez savoir<br>avant de commencer</h2>
+        <div class="gold-rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="faq-list reveal" role="list">
+        <div class="faq-item" role="listitem">
+          <div class="faq-q" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-a1">
+            <span class="faq-q-text">Est-ce que l'affiliation est vraiment légale et éthique ?</span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </div>
+          <div class="faq-a" id="faq-a1" role="region">
+            <p>Absolument. L'affiliation est un modèle marketing utilisé par des millions d'entreprises dans le monde (Amazon, Booking, Airbnb, etc.). Vous recommandez des produits ou services, et si quelqu'un achète via votre lien, vous touchez une commission. C'est transparent, déclaré et parfaitement légal. EarnBiz vous aide à construire ça de façon professionnelle.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <div class="faq-q" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-a2">
+            <span class="faq-q-text">Je suis débutant complet. Puis-je vraiment y arriver ?</span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </div>
+          <div class="faq-a" id="faq-a2" role="region">
+            <p>Oui. EarnBiz est conçu pour les débutants en premier lieu. Notre formation part de zéro : qu'est-ce que l'affiliation, comment choisir un programme, comment créer du contenu, comment attirer du trafic. Chaque étape est expliquée simplement, avec des exemples concrets et des actions immédiates.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <div class="faq-q" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-a3">
+            <span class="faq-q-text">Combien de temps faut-il consacrer par semaine ?</span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </div>
+          <div class="faq-a" id="faq-a3" role="region">
+            <p>La phase de lancement demande environ 5 à 10 heures par semaine. Une fois votre système en place (contenu, liens, distribution), le temps d'entretien se réduit fortement. C'est exactement ce que signifie "revenus passifs" : vous construisez une fois, ça tourne longtemps.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <div class="faq-q" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-a4">
+            <span class="faq-q-text">Est-ce que EarnBiz est lui-même un programme d'affiliation ?</span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </div>
+          <div class="faq-a" id="faq-a4" role="region">
+            <p>Oui, et nous l'assumons totalement. EarnBiz dispose de son propre programme d'affiliation : si vous recommandez la plateforme et qu'un membre souscrit, vous touchez une commission. C'est notre façon de pratiquer ce que nous enseignons — de manière transparente et éthique.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <div class="faq-q" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-a5">
+            <span class="faq-q-text">Quels types de revenus peut-on espérer ?</span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </div>
+          <div class="faq-a" id="faq-a5" role="region">
+            <p>Soyons honnêtes : les résultats varient selon votre implication, votre niche et le temps investi. Nos membres actifs génèrent entre 200 € et 6 000 € par mois. La médiane après 3 mois est de 840 €/mois. Ce ne sont pas des promesses — ce sont des statistiques réelles de notre communauté.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <div class="faq-q" role="button" tabindex="0" aria-expanded="false" aria-controls="faq-a6">
+            <span class="faq-q-text">Faut-il un site web ou une audience au départ ?</span>
+            <span class="faq-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </span>
+          </div>
+          <div class="faq-a" id="faq-a6" role="region">
+            <p>Non. Vous pouvez commencer sans site ni audience. Certains démarrent sur YouTube, d'autres sur Instagram, TikTok, un blog, ou simplement par email. EarnBiz vous montre comment choisir le canal adapté à votre profil et partir de zéro avec la bonne stratégie.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo" aria-label="EarnBiz accueil">Earn<span>Biz</span></a>
+          <p>La plateforme d'affiliation structurée pour générer des revenus réels, sans bullshit et sans fausses promesses.</p>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Plateforme</div>
+          <ul>
+            <li><a href="#pourquoi">Pourquoi EarnBiz</a></li>
+            <li><a href="#comment">Comment ça marche</a></li>
+            <li><a href="#resultats">Résultats</a></li>
+            <li><a href="#offre">Commencer</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Ressources</div>
+          <ul>
+            <li><a href="#">Blog Affiliation</a></li>
+            <li><a href="#">Catalogue Programmes</a></li>
+            <li><a href="#">Communauté</a></li>
+            <li><a href="#">Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <div class="footer-col-title">Légal</div>
+          <ul>
+            <li><a href="#">Mentions légales</a></li>
+            <li><a href="#">Politique de confidentialité</a></li>
+            <li><a href="#">CGU</a></li>
+            <li><a href="#">Politique d'affiliation</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2024 EarnBiz. Tous droits réservés.</p>
+        <p class="footer-note" role="note">
+          <strong>Transparence :</strong> EarnBiz contient des liens d'affiliation. Nous sommes rémunérés si vous souscrivez à un programme via nos liens. Cela ne change pas nos recommandations — nous ne référençons que ce que nous évaluons honnêtement.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================== JAVASCRIPT ===================== -->
+  <script>
+    'use strict';
+
+    /* ---- Scroll progress bar ---- */
+    const progressBar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+      const docH = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const pct  = docH > 0 ? (window.scrollY / docH) * 100 : 0;
+      progressBar.style.width = pct + '%';
+    }, { passive: true });
+
+    /* ---- Mobile menu ---- */
+    const hamburger   = document.getElementById('hamburger');
+    const mobileMenu  = document.getElementById('mobileMenu');
+    let menuOpen = false;
+
+    hamburger.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open', menuOpen);
+      hamburger.setAttribute('aria-expanded', menuOpen);
+      document.body.style.overflow = menuOpen ? 'hidden' : '';
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuOpen = false;
+        mobileMenu.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', false);
+        document.body.style.overflow = '';
+      });
+    });
+
+    /* ---- Scroll reveal ---- */
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal, .stagger').forEach(el => revealObs.observe(el));
+
+    /* ---- FAQ accordion ---- */
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item   = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+
+        // close all
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+        });
+
+        // open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      btn.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          btn.click();
+        }
+      });
+    });
+
+    /* ---- Live earnings ticker ---- */
+    const PROGRAMS = [
+      { id: 'v1', base: 892,   min: -15, max: 30 },
+      { id: 'v2', base: 1240,  min: -20, max: 50 },
+      { id: 'v3', base: 415,   min: -10, max: 20 },
+      { id: 'v4', base: 300.5, min: -8,  max: 15 },
+    ];
+
+    function fmt(n) {
+      return '€' + n.toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '\u00a0');
+    }
+
+    let currentValues = PROGRAMS.map(p => p.base);
+
+    function updateTicker() {
+      let total = 0;
+
+      PROGRAMS.forEach((p, i) => {
+        const delta = (Math.random() * (p.max - p.min) + p.min) * 0.05;
+        currentValues[i] = Math.max(50, currentValues[i] + delta);
+        total += currentValues[i];
+
+        const el = document.getElementById(p.id);
+        if (el) el.textContent = fmt(currentValues[i]);
+      });
+
+      const mainEl = document.getElementById('mainValue');
+      if (mainEl) mainEl.textContent = fmt(total);
+    }
+
+    /* Generate mini chart bars */
+    const miniChart = document.getElementById('miniChart');
+    if (miniChart) {
+      const heights = [40, 55, 35, 60, 45, 70, 50, 80, 65, 85, 60, 90];
+      heights.forEach(h => {
+        const bar = document.createElement('div');
+        bar.className = 'mini-bar';
+        bar.style.height = h + '%';
+        miniChart.appendChild(bar);
+      });
+    }
+
+    // Update ticker every 2.5 seconds
+    setInterval(updateTicker, 2500);
+
+    /* ---- Smooth anchor nav ---- */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          const top = target.getBoundingClientRect().top + window.scrollY - 72;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+
+  </script>
+
+</body>
+</html>
